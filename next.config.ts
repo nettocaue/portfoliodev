@@ -1,7 +1,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async headers() {
+    return [
+      {
+        source: '/curriculo-caue-netto.pdf',
+        headers: [
+          {
+            key: 'Content-Disposition',
+            value: 'attachment; filename="curriculo-caue-netto.pdf"',
+          },
+        ],
+      },
+    ];
+  },
   experimental: {
     agentFeedback: true,
   },
